@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ - CautioGo</title>
+<style>
+:root{--primary:#6C5CE7;--secondary:#00CEC9;--accent:#FD79A8;--dark:#2D3436;--light:#F8F9FE;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif;}
+body{background:var(--light);color:var(--dark);overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 8%;position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06);}
+.logo{font-size:1.6rem;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.nav-links{display:flex;gap:28px;font-weight:600;font-size:0.92rem;}
+.nav-links a:hover{color:var(--primary);}
+.nav-cta{background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;padding:10px 22px;border-radius:50px;font-weight:700;box-shadow:0 4px 15px rgba(108,92,231,0.35);transition:transform .3s;}
+.nav-cta:hover{transform:translateY(-2px);}
+
+.page-hero{padding:140px 8% 80px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;text-align:center;}
+.page-hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;margin-bottom:16px;}
+.page-hero p{font-size:1.1rem;opacity:0.9;max-width:600px;margin:0 auto;}
+
+section{padding:80px 8%;}
+.section-title{text-align:center;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;margin-bottom:14px;}
+.section-sub{text-align:center;color:#636e72;max-width:580px;margin:0 auto 55px;font-size:1.05rem;line-height:1.6;}
+
+.faq-category{margin-bottom:50px;}
+.faq-category-title{font-size:1.2rem;font-weight:800;color:var(--primary);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.faq-wrap{max-width:800px;margin:0 auto;}
+.faq-item{background:white;border-radius:16px;margin-bottom:12px;padding:20px 24px;cursor:pointer;border:1px solid rgba(0,0,0,0.05);transition:box-shadow .3s,border-color .3s;}
+.faq-item:hover{box-shadow:0 8px 25px rgba(108,92,231,0.1);border-color:rgba(108,92,231,0.2);}
+.faq-item.open{border-color:rgba(108,92,231,0.3);box-shadow:0 8px 25px rgba(108,92,231,0.1);}
+.faq-q{font-weight:800;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:0.97rem;}
+.faq-q .icon{transition:transform .3s;color:var(--primary);font-size:1.4rem;flex-shrink:0;}
+.faq-item.open .icon{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;color:#636e72;line-height:1.7;font-size:0.95rem;}
+.faq-item.open .faq-a{max-height:300px;margin-top:14px;}
+
+.contact-box{max-width:800px;margin:0 auto;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:24px;padding:40px;color:white;text-align:center;}
+.contact-box h3{font-size:1.5rem;font-weight:900;margin-bottom:12px;}
+.contact-box p{opacity:0.9;margin-bottom:28px;line-height:1.6;}
+.contact-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-white{background:white;color:var(--primary);padding:14px 30px;border-radius:50px;font-weight:800;font-size:0.97rem;border:none;cursor:pointer;transition:transform .3s;}
+.btn-white:hover{transform:translateY(-3px);}
+.btn-outline-w{background:transparent;color:white;padding:14px 30px;border-radius:50px;font-weight:800;font-size:0.97rem;border:2px solid white;cursor:pointer;transition:all .3s;}
+.btn-outline-w:hover{background:white;color:var(--primary);}
+
+.cta-section{background:linear-gradient(135deg,var(--secondary),var(--primary));color:white;text-align:center;padding:80px 8%;}
+.cta-section h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:16px;}
+.cta-section p{font-size:1.1rem;opacity:0.9;margin-bottom:36px;}
+
+footer{background:var(--dark);color:#b2bec3;text-align:center;padding:40px 8%;font-size:0.9rem;}
+.footer-logo{font-size:1.5rem;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block;margin-bottom:10px;}
+.footer-links{display:flex;gap:24px;justify-content:center;margin:16px 0;flex-wrap:wrap;}
+.footer-links a{color:#b2bec3;font-weight:600;transition:color .3s;}
+.footer-links a:hover{color:white;}
+
+.wa-float{position:fixed;bottom:24px;right:24px;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:1.7rem;box-shadow:0 8px 25px rgba(37,211,102,0.5);z-index:200;cursor:pointer;transition:transform .3s;}
+.wa-float:hover{transform:scale(1.1);}
+
+@media(max-width:768px){.nav-links{display:none;}section{padding:60px 6%;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><a href="index.html">CautioGo</a></div>
+  <div class="nav-links">
+    <a href="comment-ca-marche.html">Comment ça marche</a>
+    <a href="conditions.html">Conditions</a>
+    <a href="faq.html" style="color:var(--primary)">FAQ</a>
+  </div>
+  <a href="inscription.html" class="nav-cta">Faire ma demande</a>
+</nav>
+
+<div class="page-hero">
+  <h1>Questions fréquentes ❓</h1>
+  <p>Tout ce que tu dois savoir sur CautioGo avant de faire ta demande.</p>
+</div>
+
+<section>
+  <div class="faq-wrap">
+
+    <div class="faq-category">
+      <div class="faq-category-title">🏠 Le service</div>
+
+      <div class="faq-item">
+        <div class="faq-q">Est-ce que CautioGo cherche un logement pour moi ? <span class="icon">+</span></div>
+        <div class="faq-a">Non. Notre service s'adresse uniquement aux étudiants qui ont déjà trouvé un logement mais qui ont besoin d'un garant français pour finaliser leur dossier. Si tu cherches encore un logement, commence par des plateformes comme Leboncoin, PAP, SeLoger ou les résidences étudiantes CROUS.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Mon propriétaire acceptera-t-il l'attestation CautioGo ? <span class="icon">+</span></div>
+        <div class="faq-a">Notre attestation est celle d'une personne physique résidant en France avec des revenus stables. C'est la forme de garantie la plus classique et la plus acceptée par les propriétaires et agences immobilières en France. Elle est accompagnée d'un engagement signé par les parents au Maroc, ce qui renforce encore la solidité du dossier.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Le service est-il disponible pour toutes les villes de France ? <span class="icon">+</span></div>
+        <div class="faq-a">Oui, notre service couvre toute la France : Paris, Lyon, Marseille, Toulouse, Bordeaux, Lille, Montpellier, Strasbourg, Nantes, Rennes, et toutes les autres villes universitaires.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Y a-t-il un loyer maximum garanti ? <span class="icon">+</span></div>
+        <div class="faq-a">Nous acceptons les dossiers pour des loyers jusqu'à 900€ charges comprises par mois. Au-delà de ce montant, contacte-nous directement sur WhatsApp pour étudier ton cas.</div>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <div class="faq-category-title">⏱️ Délais et traitement</div>
+
+      <div class="faq-item">
+        <div class="faq-q">Combien de temps faut-il pour recevoir l'attestation ? <span class="icon">+</span></div>
+        <div class="faq-a">Dès réception de ton dossier complet et confirmation du paiement, nous traitons ta demande sous 48h. Pour les cas urgents, contacte-nous directement sur WhatsApp et nous ferons le maximum pour accélérer le traitement.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Quand est-ce que vous me contactez après ma demande ? <span class="icon">+</span></div>
+        <div class="faq-a">Notre équipe te contacte sur WhatsApp dans les 24h suivant ta demande pour confirmer la réception de ton dossier, te communiquer les coordonnées de paiement et te donner les prochaines étapes.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Que se passe-t-il si mon dossier est incomplet ? <span class="icon">+</span></div>
+        <div class="faq-a">Si un document manque ou est illisible, notre équipe te contacte immédiatement sur WhatsApp pour te demander le document manquant. Le délai de 48h commence à partir du moment où ton dossier est complet.</div>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <div class="faq-category-title">💰 Paiement</div>
+
+      <div class="faq-item">
+        <div class="faq-q">Comment se passe le paiement des 5 000 DH ? <span class="icon">+</span></div>
+        <div class="faq-a">Le paiement s'effectue par virement bancaire marocain, CIH, Wafacash ou tout autre moyen de paiement local. Les coordonnées de paiement te seront communiquées sur WhatsApp après vérification de ton dossier. Le traitement de ta demande commence dès confirmation du paiement.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Le paiement est-il remboursable si ma demande est refusée ? <span class="icon">+</span></div>
+        <div class="faq-a">Oui. Si ton dossier est refusé après vérification, le paiement n'est pas demandé. Nous vérifions d'abord ton dossier, puis nous te demandons le paiement seulement si tout est en ordre. Tu ne paies que lorsque ta demande est validée.</div>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <div class="faq-category-title">🔒 Sécurité et garanties</div>
+
+      <div class="faq-item">
+        <div class="faq-q">Que se passe-t-il si l'étudiant ne paie pas son loyer ? <span class="icon">+</span></div>
+        <div class="faq-a">En cas d'impayé, le propriétaire peut se retourner contre notre garant français. C'est pourquoi nous demandons également un engagement signé de tes parents au Maroc : ils s'engagent à régler tout impayé dans les meilleurs délais. Cette double sécurité protège toutes les parties.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Mes données personnelles sont-elles protégées ? <span class="icon">+</span></div>
+        <div class="faq-a">Oui. Toutes les informations et documents que tu nous transmets sont utilisés uniquement dans le cadre de ta demande de garantie. Ils ne sont jamais partagés avec des tiers sans ton accord.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Que se passe-t-il si le propriétaire refuse finalement de louer ? <span class="icon">+</span></div>
+        <div class="faq-a">Si le propriétaire se rétracte après émission de l'attestation pour des raisons indépendantes de ta garantie, contacte-nous sur WhatsApp. Chaque situation est étudiée au cas par cas.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="contact-box">
+    <h3>Tu n'as pas trouvé ta réponse ? 💬</h3>
+    <p>Notre équipe est disponible sur WhatsApp en arabe et en français pour répondre à toutes tes questions.</p>
+    <div class="contact-btns">
+      <a href="https://wa.me/212600000000" target="_blank"><button class="btn-white">💬 Nous contacter sur WhatsApp</button></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">CautioGo</div>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="comment-ca-marche.html">Comment ça marche</a>
+    <a href="conditions.html">Conditions</a>
+    <a href="faq.html">FAQ</a>
+    <a href="inscription.html">Faire ma demande</a>
+  </div>
+  <p>© 2026 CautioGo — Le garant qui t'ouvre les portes de la France 🇫🇷</p>
+</footer>
+
+<a href="https://wa.me/212600000000" target="_blank"><div class="wa-float">💬</div></a>
+
+<script>
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.addEventListener('click',()=>item.classList.toggle('open'));
+});
+</script>
+
+</body>
+</html>

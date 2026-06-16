@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demande envoyée - CautioGo</title>
+<style>
+:root{--primary:#6C5CE7;--secondary:#00CEC9;--dark:#2D3436;--light:#F8F9FE;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif;}
+body{background:var(--light);color:var(--dark);min-height:100vh;display:flex;flex-direction:column;}
+a{text-decoration:none;color:inherit;}
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 8%;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06);}
+.logo{font-size:1.6rem;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;background-clip:text;color:transparent;}
+
+.main{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 8%;}
+.success-card{background:white;border-radius:24px;padding:60px 40px;box-shadow:0 10px 40px rgba(108,92,231,0.1);text-align:center;max-width:650px;width:100%;}
+.success-icon{font-size:5rem;margin-bottom:24px;animation:bounce 1s ease;}
+@keyframes bounce{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}
+.success-card h1{font-size:2rem;font-weight:900;color:var(--primary);margin-bottom:14px;}
+.success-card p{color:#636e72;line-height:1.7;font-size:1rem;margin-bottom:10px;}
+.success-steps{background:var(--light);border-radius:16px;padding:24px;margin-top:28px;text-align:left;}
+.success-steps h4{font-weight:800;margin-bottom:16px;font-size:1.05rem;}
+.success-step{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;}
+.success-step:last-child{margin-bottom:0;}
+.ss-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;font-weight:800;font-size:0.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ss-text{font-size:0.95rem;color:#636e72;line-height:1.5;padding-top:4px;}
+.btn-home{display:inline-block;margin-top:32px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;padding:14px 36px;border-radius:50px;font-weight:800;font-size:1rem;box-shadow:0 4px 15px rgba(108,92,231,0.3);transition:transform .3s;}
+.btn-home:hover{transform:translateY(-3px);}
+
+footer{background:var(--dark);color:#b2bec3;text-align:center;padding:30px 8%;font-size:0.9rem;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><a href="index.html">CautioGo</a></div>
+</nav>
+
+<div class="main">
+  <div class="success-card">
+    <div class="success-icon">🎉</div>
+    <h1>Demande envoyée avec succès !</h1>
+    <p>Ton dossier a bien été reçu par notre équipe CautioGo.</p>
+    <p>Nous allons l'examiner et te contacter sur <strong>WhatsApp</strong> dans les <strong>24h</strong>.</p>
+
+    <div class="success-steps">
+      <h4>📋 Prochaines étapes :</h4>
+      <div class="success-step">
+        <div class="ss-num">1</div>
+        <div class="ss-text"><strong>Envoie maintenant tes documents</strong> par email à <strong>contact@cautiogo.com</strong> ou sur WhatsApp au <strong>+212 6XX XXX XXX</strong> (passeport, bail, lettre d'admission, CIN parent)</div>
+      </div>
+      <div class="success-step">
+        <div class="ss-num">2</div>
+        <div class="ss-text">Notre équipe vérifie ton dossier et te contacte sur WhatsApp sous 24h</div>
+      </div>
+      <div class="success-step">
+        <div class="ss-num">3</div>
+        <div class="ss-text">Tu reçois les coordonnées de paiement des 5 000 DH</div>
+      </div>
+      <div class="success-step">
+        <div class="ss-num">4</div>
+        <div class="ss-text">Dès paiement confirmé, ton attestation de garantie est émise sous 48h et envoyée à ton propriétaire 🏠</div>
+      </div>
+    </div>
+
+    <a href="index.html" class="btn-home">Retour à l'accueil</a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 CautioGo — Le garant qui t'ouvre les portes de la France 🇫🇷</p>
+</footer>
+
+</body>
+</html>

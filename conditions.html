@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conditions - CautioGo</title>
+<style>
+:root{--primary:#6C5CE7;--secondary:#00CEC9;--accent:#FD79A8;--dark:#2D3436;--light:#F8F9FE;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif;}
+body{background:var(--light);color:var(--dark);overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 8%;position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06);}
+.logo{font-size:1.6rem;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.nav-links{display:flex;gap:28px;font-weight:600;font-size:0.92rem;}
+.nav-links a:hover{color:var(--primary);}
+.nav-cta{background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;padding:10px 22px;border-radius:50px;font-weight:700;box-shadow:0 4px 15px rgba(108,92,231,0.35);transition:transform .3s;}
+.nav-cta:hover{transform:translateY(-2px);}
+
+.page-hero{padding:140px 8% 80px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;text-align:center;}
+.page-hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;margin-bottom:16px;}
+.page-hero p{font-size:1.1rem;opacity:0.9;max-width:600px;margin:0 auto;}
+
+section{padding:80px 8%;}
+.section-title{text-align:center;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;margin-bottom:14px;}
+.section-sub{text-align:center;color:#636e72;max-width:580px;margin:0 auto 55px;font-size:1.05rem;line-height:1.6;}
+
+.conditions-box{max-width:800px;margin:0 auto;}
+.condition-item{display:flex;align-items:flex-start;gap:20px;padding:28px;background:white;border-radius:20px;margin-bottom:16px;box-shadow:0 8px 25px rgba(108,92,231,0.07);border:1px solid rgba(108,92,231,0.08);transition:transform .3s;}
+.condition-item:hover{transform:translateY(-4px);}
+.cond-icon{font-size:2rem;min-width:50px;text-align:center;background:linear-gradient(135deg,rgba(108,92,231,0.1),rgba(0,206,201,0.1));width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cond-text h4{font-weight:800;margin-bottom:6px;font-size:1.05rem;}
+.cond-text p{color:#636e72;font-size:0.93rem;line-height:1.6;}
+.required-badge{display:inline-block;background:var(--accent);color:white;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:50px;margin-top:10px;}
+
+.docs-section{background:white;}
+.docs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:900px;margin:0 auto;}
+.doc-card{padding:24px;border-radius:18px;background:var(--light);border:2px solid rgba(108,92,231,0.1);text-align:center;transition:transform .3s,box-shadow .3s;}
+.doc-card:hover{transform:scale(1.03);box-shadow:0 8px 25px rgba(108,92,231,0.1);}
+.doc-icon{font-size:2.2rem;margin-bottom:10px;display:block;}
+.doc-card h4{font-weight:800;margin-bottom:6px;}
+.doc-card p{color:#636e72;font-size:0.88rem;line-height:1.5;}
+.doc-required{display:inline-block;background:var(--accent);color:white;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:50px;margin-top:10px;}
+
+.warning-box{max-width:800px;margin:0 auto;background:linear-gradient(135deg,#fdcb6e,#e17055);border-radius:20px;padding:32px;color:white;text-align:center;}
+.warning-box h3{font-size:1.3rem;font-weight:900;margin-bottom:12px;}
+.warning-box p{font-size:0.97rem;line-height:1.6;opacity:0.95;}
+
+.cta-section{background:linear-gradient(135deg,var(--secondary),var(--primary));color:white;text-align:center;padding:80px 8%;}
+.cta-section h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:16px;}
+.cta-section p{font-size:1.1rem;opacity:0.9;margin-bottom:36px;}
+.btn-white{background:white;color:var(--primary);padding:16px 40px;border-radius:50px;font-weight:800;font-size:1.05rem;border:none;cursor:pointer;box-shadow:0 8px 25px rgba(0,0,0,0.15);transition:transform .3s;}
+.btn-white:hover{transform:translateY(-4px);}
+
+footer{background:var(--dark);color:#b2bec3;text-align:center;padding:40px 8%;font-size:0.9rem;}
+.footer-logo{font-size:1.5rem;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block;margin-bottom:10px;}
+.footer-links{display:flex;gap:24px;justify-content:center;margin:16px 0;flex-wrap:wrap;}
+.footer-links a{color:#b2bec3;font-weight:600;transition:color .3s;}
+.footer-links a:hover{color:white;}
+
+.wa-float{position:fixed;bottom:24px;right:24px;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:1.7rem;box-shadow:0 8px 25px rgba(37,211,102,0.5);z-index:200;cursor:pointer;transition:transform .3s;}
+.wa-float:hover{transform:scale(1.1);}
+
+@media(max-width:768px){.nav-links{display:none;}section{padding:60px 6%;}.condition-item{flex-direction:column;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><a href="index.html">CautioGo</a></div>
+  <div class="nav-links">
+    <a href="comment-ca-marche.html">Comment ça marche</a>
+    <a href="conditions.html" style="color:var(--primary)">Conditions</a>
+    <a href="faq.html">FAQ</a>
+  </div>
+  <a href="inscription.html" class="nav-cta">Faire ma demande</a>
+</nav>
+
+<div class="page-hero">
+  <h1>Conditions d'accès 📋</h1>
+  <p>Avant de faire ta demande, vérifie que tu remplis toutes les conditions ci-dessous.</p>
+</div>
+
+<section>
+  <h2 class="section-title">Ce qu'il te faut pour faire une demande</h2>
+  <p class="section-sub">Assure-toi d'avoir ces éléments en main avant de remplir le formulaire.</p>
+
+  <div class="conditions-box">
+
+    <div class="condition-item">
+      <div class="cond-icon">🏠</div>
+      <div class="cond-text">
+        <h4>Une offre de logement déjà trouvée en France</h4>
+        <p>Tu dois avoir reçu une proposition de bail ou une offre de location d'un propriétaire ou d'une agence en France. CautioGo ne cherche pas de logement à ta place — notre rôle commence là où ta recherche se termine.</p>
+        <span class="required-badge">Obligatoire</span>
+      </div>
+    </div>
+
+    <div class="condition-item">
+      <div class="cond-icon">🎓</div>
+      <div class="cond-text">
+        <h4>Une lettre d'admission ou attestation d'inscription</h4>
+        <p>D'une université, école, BTS, école d'ingénieurs ou de commerce en France pour l'année universitaire en cours ou à venir. Le document doit mentionner ton nom, ton établissement et ta formation.</p>
+        <span class="required-badge">Obligatoire</span>
+      </div>
+    </div>
+
+    <div class="condition-item">
+      <div class="cond-icon">🪪</div>
+      <div class="cond-text">
+        <h4>Un passeport marocain valide</h4>
+        <p>Ton passeport doit être en cours de validité pendant toute la durée de ton bail en France. Assure-toi que la date d'expiration est suffisamment éloignée.</p>
+        <span class="required-badge">Obligatoire</span>
+      </div>
+    </div>
+
+    <div class="condition-item">
+      <div class="cond-icon">👨‍👩‍👧</div>
+      <div class="cond-text">
+        <h4>Un parent au Maroc</h4>
+        <p>Père, mère ou tuteur légal, avec une CIN valide et une situation professionnelle stable. Il devra signer un engagement de garantie et fournir ses coordonnées complètes. Notre équipe le contactera directement sur WhatsApp.</p>
+        <span class="required-badge">Obligatoire</span>
+      </div>
+    </div>
+
+    <div class="condition-item">
+      <div class="cond-icon">📄</div>
+      <div class="cond-text">
+        <h4>Le projet de bail ou l'offre de location</h4>
+        <p>Le document reçu de ton propriétaire ou de ton agence, mentionnant l'adresse du logement, le montant du loyer, la durée du bail et les coordonnées du propriétaire.</p>
+        <span class="required-badge">Obligatoire</span>
+      </div>
+    </div>
+
+    <div class="condition-item">
+      <div class="cond-icon">💰</div>
+      <div class="cond-text">
+        <h4>Le paiement de 5 000 DH</h4>
+        <p>Par virement bancaire marocain, CIH, Wafacash ou tout autre moyen de paiement local. Le paiement valide le démarrage effectif de ton dossier et l'émission de l'attestation de garantie.</p>
+        <span class="required-badge">Obligatoire</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="docs-section">
+  <h2 class="section-title">Documents à uploader</h2>
+  <p class="section-sub">Tous les documents ci-dessous sont obligatoires pour traiter ta demande.</p>
+  <div class="docs-grid">
+    <div class="doc-card">
+      <span class="doc-icon">📄</span>
+      <h4>Projet de bail</h4>
+      <p>Offre de location ou projet de contrat reçu du propriétaire ou de l'agence.</p>
+      <span class="doc-required">Obligatoire</span>
+    </div>
+    <div class="doc-card">
+      <span class="doc-icon">🪪</span>
+      <h4>Passeport étudiant</h4>
+      <p>Passeport marocain en cours de validité, page principale.</p>
+      <span class="doc-required">Obligatoire</span>
+    </div>
+    <div class="doc-card">
+      <span class="doc-icon">🎓</span>
+      <h4>Lettre d'admission</h4>
+      <p>Lettre d'admission ou attestation d'inscription dans ton établissement en France.</p>
+      <span class="doc-required">Obligatoire</span>
+    </div>
+    <div class="doc-card">
+      <span class="doc-icon">🪪</span>
+      <h4>CIN du parent</h4>
+      <p>Carte d'identité nationale du parent au Maroc.</p>
+      <span class="doc-required">Obligatoire</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="warning-box">
+    <h3>⚠️ Important à savoir</h3>
+    <p>CautioGo se réserve le droit de refuser toute demande dont le dossier est incomplet, dont les documents semblent frauduleux, ou dont le loyer dépasse nos plafonds de garantie. En cas de refus, le paiement n'est pas demandé. Notre priorité est de garantir des dossiers solides et fiables pour toutes les parties.</p>
+  </div>
+</section>
+
+<div class="cta-section">
+  <h2>Tu remplis toutes les conditions ? ✅</h2>
+  <p>Lance ta demande maintenant et notre équipe te contacte sous 24h sur WhatsApp.</p>
+  <a href="inscription.html"><button class="btn-white">Faire ma demande</button></a>
+</div>
+
+<footer>
+  <div class="footer-logo">CautioGo</div>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="comment-ca-marche.html">Comment ça marche</a>
+    <a href="conditions.html">Conditions</a>
+    <a href="faq.html">FAQ</a>
+    <a href="inscription.html">Faire ma demande</a>
+  </div>
+  <p>© 2026 CautioGo — Le garant qui t'ouvre les portes de la France 🇫🇷</p>
+</footer>
+
+<a href="https://wa.me/212600000000" target="_blank"><div class="wa-float">💬</div></a>
+
+</body>
+</html>

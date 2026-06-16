@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comment ça marche - CautioGo</title>
+<style>
+:root{--primary:#6C5CE7;--secondary:#00CEC9;--accent:#FD79A8;--dark:#2D3436;--light:#F8F9FE;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif;}
+body{background:var(--light);color:var(--dark);overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 8%;position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06);}
+.logo{font-size:1.6rem;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.nav-links{display:flex;gap:28px;font-weight:600;font-size:0.92rem;}
+.nav-links a:hover{color:var(--primary);}
+.nav-cta{background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;padding:10px 22px;border-radius:50px;font-weight:700;box-shadow:0 4px 15px rgba(108,92,231,0.35);transition:transform .3s;}
+.nav-cta:hover{transform:translateY(-2px);}
+
+.page-hero{padding:140px 8% 80px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;text-align:center;}
+.page-hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;margin-bottom:16px;}
+.page-hero p{font-size:1.1rem;opacity:0.9;max-width:600px;margin:0 auto;}
+
+section{padding:80px 8%;}
+.section-title{text-align:center;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;margin-bottom:14px;}
+.section-sub{text-align:center;color:#636e72;max-width:580px;margin:0 auto 55px;font-size:1.05rem;line-height:1.6;}
+
+.steps-vertical{max-width:800px;margin:0 auto;}
+.step-v{display:flex;gap:30px;margin-bottom:50px;align-items:flex-start;}
+.step-v:last-child{margin-bottom:0;}
+.step-left{display:flex;flex-direction:column;align-items:center;}
+.step-num{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;font-weight:900;font-size:1.4rem;flex-shrink:0;}
+.step-line{width:3px;flex:1;background:linear-gradient(to bottom,var(--primary),var(--secondary));margin:8px 0;min-height:60px;border-radius:2px;}
+.step-v:last-child .step-line{display:none;}
+.step-content{background:white;border-radius:20px;padding:28px;box-shadow:0 8px 25px rgba(108,92,231,0.08);border:1px solid rgba(108,92,231,0.08);flex:1;}
+.step-content h3{font-size:1.2rem;font-weight:800;margin-bottom:10px;color:var(--primary);}
+.step-content p{color:#636e72;line-height:1.6;font-size:0.97rem;}
+.step-content .tip{background:rgba(108,92,231,0.06);border-left:3px solid var(--primary);padding:10px 14px;border-radius:0 8px 8px 0;margin-top:14px;font-size:0.88rem;color:var(--dark);}
+
+.timeline-section{background:white;}
+
+.docs-section{background:linear-gradient(135deg,var(--dark),#1e2225);color:white;}
+.docs-section .section-title{color:white;}
+.docs-section .section-sub{color:#b2bec3;}
+.docs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:900px;margin:0 auto;}
+.doc-card{background:rgba(255,255,255,0.07);border-radius:16px;padding:24px;border:1px solid rgba(255,255,255,0.12);text-align:center;}
+.doc-icon{font-size:2.5rem;margin-bottom:12px;display:block;}
+.doc-card h4{font-weight:800;margin-bottom:6px;}
+.doc-card p{color:#b2bec3;font-size:0.88rem;line-height:1.5;}
+.doc-required{display:inline-block;background:var(--accent);color:white;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:50px;margin-top:10px;}
+.doc-optional{display:inline-block;background:rgba(255,255,255,0.2);color:white;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:50px;margin-top:10px;}
+
+.cta-section{background:linear-gradient(135deg,var(--secondary),var(--primary));color:white;text-align:center;padding:80px 8%;}
+.cta-section h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:16px;}
+.cta-section p{font-size:1.1rem;opacity:0.9;margin-bottom:36px;}
+.btn-white{background:white;color:var(--primary);padding:16px 40px;border-radius:50px;font-weight:800;font-size:1.05rem;border:none;cursor:pointer;box-shadow:0 8px 25px rgba(0,0,0,0.15);transition:transform .3s;}
+.btn-white:hover{transform:translateY(-4px);}
+
+footer{background:var(--dark);color:#b2bec3;text-align:center;padding:40px 8%;font-size:0.9rem;}
+.footer-logo{font-size:1.5rem;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block;margin-bottom:10px;}
+.footer-links{display:flex;gap:24px;justify-content:center;margin:16px 0;flex-wrap:wrap;}
+.footer-links a{color:#b2bec3;font-weight:600;transition:color .3s;}
+.footer-links a:hover{color:white;}
+
+.wa-float{position:fixed;bottom:24px;right:24px;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:1.7rem;box-shadow:0 8px 25px rgba(37,211,102,0.5);z-index:200;cursor:pointer;transition:transform .3s;}
+.wa-float:hover{transform:scale(1.1);}
+
+@media(max-width:768px){.nav-links{display:none;}section{padding:60px 6%;}.step-v{flex-direction:column;}.step-left{flex-direction:row;}.step-line{display:none;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><a href="index.html">CautioGo</a></div>
+  <div class="nav-links">
+    <a href="comment-ca-marche.html" style="color:var(--primary)">Comment ça marche</a>
+    <a href="conditions.html">Conditions</a>
+    <a href="faq.html">FAQ</a>
+  </div>
+  <a href="inscription.html" class="nav-cta">Faire ma demande</a>
+</nav>
+
+<div class="page-hero">
+  <h1>Comment ça marche ? 🎓</h1>
+  <p>5 étapes simples pour obtenir ton attestation de garantie et signer ton bail en toute sérénité.</p>
+</div>
+
+<section class="timeline-section">
+  <div class="steps-vertical">
+
+    <div class="step-v">
+      <div class="step-left">
+        <div class="step-num">1</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <h3>Tu remplis le formulaire en ligne</h3>
+        <p>Renseigne tes informations personnelles, les détails de ton logement déjà trouvé en France, et les informations de ton parent garant au Maroc. Tout se fait en ligne, en moins de 5 minutes.</p>
+        <div class="tip">⚠️ Tu dois avoir <strong>déjà reçu une offre de logement</strong> avant de remplir le formulaire.</div>
+      </div>
+    </div>
+
+    <div class="step-v">
+      <div class="step-left">
+        <div class="step-num">2</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <h3>Tu uploades tes documents</h3>
+        <p>Ton passeport, ta lettre d'admission, le projet de bail reçu du propriétaire, et la CIN de ton parent garant. Tout se fait directement depuis le formulaire, en quelques clics.</p>
+        <div class="tip">📄 Formats acceptés : PDF, JPG, PNG — taille max 5 Mo par document.</div>
+      </div>
+    </div>
+
+    <div class="step-v">
+      <div class="step-left">
+        <div class="step-num">3</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <h3>Notre équipe vérifie ton dossier</h3>
+        <p>On examine attentivement tous tes documents, on vérifie le projet de bail, et on contacte ton parent garant sur WhatsApp pour finaliser l'engagement de garantie de votre côté au Maroc.</p>
+        <div class="tip">💬 Tu seras contacté(e) sur WhatsApp dans les 24h suivant ta demande.</div>
+      </div>
+    </div>
+
+    <div class="step-v">
+      <div class="step-left">
+        <div class="step-num">4</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <h3>Tu effectues le paiement de 5 000 DH</h3>
+        <p>Une fois ton dossier validé, tu reçois les coordonnées de paiement. Le règlement s'effectue par virement bancaire marocain, CIH, Wafacash ou tout autre moyen de paiement local. Le dossier est lancé dès confirmation du paiement.</p>
+        <div class="tip">💰 Paiement 100% local en dirhams — pas besoin de carte bancaire française.</div>
+      </div>
+    </div>
+
+    <div class="step-v">
+      <div class="step-left">
+        <div class="step-num">5</div>
+      </div>
+      <div class="step-content">
+        <h3>Tu reçois ton attestation et signes ton bail 🎉</h3>
+        <p>Ton attestation de garantie officielle est émise sous 48h après confirmation du paiement. On l'envoie directement à ton propriétaire ou à ton agence. Il ne te reste plus qu'à signer ton bail et préparer ton départ en France !</p>
+        <div class="tip">✅ Notre garant est une personne physique résidant en France avec des revenus stables — c'est la forme de garantie la plus acceptée par les propriétaires.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="docs-section">
+  <h2 class="section-title">Documents à préparer</h2>
+  <p class="section-sub">Prépare ces documents à l'avance pour accélérer le traitement de ta demande.</p>
+  <div class="docs-grid">
+    <div class="doc-card">
+      <span class="doc-icon">📄</span>
+      <h4>Projet de bail</h4>
+      <p>L'offre de location ou le projet de contrat reçu du propriétaire ou de l'agence.</p>
+      <span class="doc-required">Obligatoire</span>
+    </div>
+    <div class="doc-card">
+      <span class="doc-icon">🪪</span>
+      <h4>Passeport étudiant</h4>
+      <p>Ton passeport marocain en cours de validité, page principale.</p>
+      <span class="doc-required">Obligatoire</span>
+    </div>
+    <div class="doc-card">
+      <span class="doc-icon">🎓</span>
+      <h4>Lettre d'admission</h4>
+      <p>Lettre d'admission ou attestation d'inscription dans ton établissement en France.</p>
+      <span class="doc-required">Obligatoire</span>
+    </div>
+    <div class="doc-card">
+      <span class="doc-icon">🪪</span>
+      <h4>CIN du parent</h4>
+      <p>Carte d'identité nationale du parent au Maroc.</p>
+      <span class="doc-required">Obligatoire</span>
+    </div>
+  </div>
+</section>
+
+<div class="cta-section">
+  <h2>Tu as tout ce qu'il faut ? 🚀</h2>
+  <p>Lance ta demande maintenant et notre équipe te contacte sous 24h sur WhatsApp.</p>
+  <a href="inscription.html"><button class="btn-white">Faire ma demande</button></a>
+</div>
+
+<footer>
+  <div class="footer-logo">CautioGo</div>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="comment-ca-marche.html">Comment ça marche</a>
+    <a href="conditions.html">Conditions</a>
+    <a href="faq.html">FAQ</a>
+    <a href="inscription.html">Faire ma demande</a>
+  </div>
+  <p>© 2026 CautioGo — Le garant qui t'ouvre les portes de la France 🇫🇷</p>
+</footer>
+
+<a href="https://wa.me/212600000000" target="_blank"><div class="wa-float">💬</div></a>
+
+</body>
+</html>
