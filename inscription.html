@@ -85,7 +85,9 @@ footer{background:var(--dark);color:#b2bec3;text-align:center;padding:40px 8%;fo
   </div>
 
   <form id="mainForm">
-    <input type="hidden" name="_next" value="https://cautiogo.com/merci.html">
+    <input type="hidden" name="access_key" value="36a94bec-7f82-4d56-b8be-4a19076e8998">
+    <input type="hidden" name="subject" value="Nouvelle demande de garantie CautioGo">
+    <input type="hidden" name="redirect" value="https://cautiogo.com/merci.html">
 
     <!-- ÉTAPE 1 -->
     <div id="st1" class="form-card">
@@ -245,7 +247,7 @@ document.getElementById('mainForm').addEventListener('submit', function(e){
 
   const formData = new FormData(this);
 
-  fetch('https://formspree.io/f/xkoayoqq', {
+  fetch('https://api.web3forms.com/submit', {
     method: 'POST',
     body: formData,
     headers: {'Accept': 'application/json'}
