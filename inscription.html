@@ -84,7 +84,7 @@ footer{background:var(--dark);color:#b2bec3;text-align:center;padding:40px 8%;fo
     <div class="s-dot" id="d3">3</div>
   </div>
 
-  <form id="mainForm" action="https://formspree.io/f/xkoayoqq" method="POST">
+  <form id="mainForm">
     <input type="hidden" name="_next" value="https://cautiogo.com/merci.html">
 
     <!-- ÉTAPE 1 -->
@@ -238,6 +238,31 @@ function goTo(n){
   }
   window.scrollTo({top:0,behavior:'smooth'});
 }
+
+document.getElementById('mainForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  if(!validateStep(3)) return;
+
+  const formData = new FormData(this);
+
+  fetch('https://formspree.io/f/xkoayoqq', {
+    method: 'POST',
+    body: formData,
+    headers: {'Accept': 'application/json'}
+  })
+  .then(response => {
+    if(response.ok){
+      window.location.href = 'https://cautiogo.com/merci.html';
+    } else {
+      response.json().then(data => {
+        alert('Une erreur est survenue. Veuillez réessayer.');
+      });
+    }
+  })
+  .catch(() => {
+    alert('Une erreur est survenue. Veuillez réessayer.');
+  });
+});
 </script>
 
 </body>
