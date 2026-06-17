@@ -39,11 +39,12 @@ input:focus,select:focus{outline:none;border-color:var(--primary);}
 .docs-reminder ul{list-style:none;padding:0;}
 .docs-reminder ul li{padding:6px 0;font-size:0.92rem;color:#636e72;}
 .docs-reminder ul li::before{content:'📎 ';}
-.contact-info{background:var(--light);border-radius:12px;padding:16px;margin-top:14px;text-align:center;}
+.contact-info{background:white;border-radius:12px;padding:16px;margin-top:14px;text-align:center;border:1px solid rgba(108,92,231,0.1);}
 .contact-info p{font-size:0.9rem;color:#636e72;margin-bottom:8px;}
 .contact-info strong{color:var(--primary);}
 .btn-row{display:flex;gap:12px;margin-top:24px;}
 .btn-back{flex:1;padding:14px;border:none;border-radius:12px;background:#dfe6e9;color:var(--dark);font-weight:700;font-size:0.97rem;cursor:pointer;}
+.btn-back:hover{background:#b2bec3;}
 .btn-next{flex:2;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;font-weight:800;font-size:0.97rem;cursor:pointer;box-shadow:0 4px 15px rgba(108,92,231,0.3);}
 .btn-next:hover{transform:scale(1.02);}
 .error-msg{color:#d63031;font-size:0.88rem;font-weight:700;margin-top:12px;display:none;background:#fff5f5;padding:10px 14px;border-radius:8px;border-left:3px solid #d63031;}
@@ -184,9 +185,8 @@ footer{background:var(--dark);color:#b2bec3;text-align:center;padding:40px 8%;fo
           <li>CIN du parent</li>
         </ul>
         <div class="contact-info">
-          <p>Envoie tes documents par email ou WhatsApp :</p>
-          <strong>📧 contact@cautiogo.com</strong><br>
-          <strong>💬 WhatsApp : +212 6XX XXX XXX</strong>
+          <p>Envoie tes documents en format PDF par email :</p>
+          <strong>📧 contact@cautiogo.com</strong>
         </div>
       </div>
 
